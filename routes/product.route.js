@@ -33,8 +33,8 @@ ProductRouter.patch('/update/:id',async(req,res)=>{
     const payload = req.body
     const ID = req.params.id
     const product = await ProductModel.find({_id:ID})
-    const userID_in_product = product[0].userID 
-    const userID_making_request = req.body.userID
+    const userID_in_product = product[0].adminID 
+    const userID_making_request = req.body.adminID
     try{
         if(userID_in_product!=userID_making_request){
             res.send('You are not authorized to do the operation')
