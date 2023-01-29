@@ -55,6 +55,15 @@ AdminRouter.get('/myproduct',async(req,res)=>{
         res.send('Something went wrong')
     }
 })
+AdminRouter.get('/users',async(req,res)=>{
+    try{
+        const users = await UserModel.find()
+        res.send(users)
+    }catch(err){
+        console.log(err)
+        res.send('Something went wrong')
+    }
+})
 
 module.exports={
     AdminRouter
