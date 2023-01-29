@@ -4,10 +4,14 @@ const {AdminRouter} = require('./routes/admin.route')
 const {UserRouter} = require('./routes/user.routes')
 const {connection} = require('./config/db')
 const { authentication } = require('./middlewares/product.middleware')
+const cors = require('cors')
 
 const app = express()
 
 app.use(express.json())
+app.use(cors({
+    origin:"*"
+}))
 
 app.get('/',(req,res)=>{
     res.send("Yes I am working")
