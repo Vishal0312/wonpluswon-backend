@@ -53,14 +53,14 @@ ProductRouter.patch('/update/:id',async(req,res)=>{
 ProductRouter.delete('/delete/:id',async(req,res)=>{
     const ID = req.params.id
     const note = await ProductModel.find({_id:ID})
-    const userID_in_note = note[0].userID 
-    const userID_making_request = req.body.userID
+    const userID_in_product = note[0].adminID 
+    const userID_making_request = req.body.adminID
     try{
-        if(userID_in_note!=userID_making_request){
+        if(userID_in_product!=userID_making_request){
             res.send('You are not authorized')
         }else{
             await ProductModel.findByIdAndDelete({_id:ID})
-        res.send(`Updated the note with id - ${ID}`)
+        res.send(`Deleted the note with id - ${ID}`)
         }
         
     }catch(err){
